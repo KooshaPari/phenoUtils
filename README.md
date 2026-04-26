@@ -124,3 +124,7 @@ phenoUtils/
 - **phenotype-tooling**: CLI tools built on pheno-shell
 - **Tracera**: Observability (uses pheno-net for metrics export)
 - **phenotype-ops-mcp**: MCP server (uses pheno-crypto for token management)
+
+## License
+
+MIT — see [LICENSE](./LICENSE).
