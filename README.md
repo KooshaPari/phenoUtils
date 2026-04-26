@@ -1,5 +1,9 @@
 # PhenoUtils
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![FR Coverage](https://github.com/KooshaPari/phenoUtils/actions/workflows/fr-coverage.yml/badge.svg)](https://github.com/KooshaPari/phenoUtils/actions/workflows/fr-coverage.yml)
+[![Rust](https://img.shields.io/badge/rust-1.75%2B-orange.svg)](https://www.rust-lang.org)
+
 Essential utilities and foundational crates for the Phenotype ecosystem. Provides CLI shells, filesystem abstractions, cryptographic operations, network utilities, and testing helpers used across all Phenotype services and tools.
 
 ## Overview
