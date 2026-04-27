@@ -2,9 +2,11 @@ name: CodeQL
 
 on:
   push:
+    branches: ["main"]
   pull_request:
+    branches: ["main"]
   schedule:
-    - cron: '0 12 * * 2'
+    - cron: "23 4 * * 2"
   workflow_dispatch:
 
 permissions:
@@ -16,18 +18,24 @@ jobs:
   analyze:
     name: Analyze Rust
     runs-on: ubuntu-latest
-    timeout-minutes: 360
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@v3
+        uses: github/codeql-action/init@v4
         with:
           languages: rust
 
-      - name: Perform CodeQL analysis
-        uses: github/codeql-action/analyze@v3
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v4
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v4
         with:
-          category: /language:rust
+          category: "/language:rust"
