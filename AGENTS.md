@@ -4,7 +4,9 @@ This file governs work inside the phenoUtils repository.
 
 ## Identity
 
-phenoUtils is a [brief description of purpose and role in Phenotype ecosystem].
+phenoUtils is the shared Rust utilities workspace for the Phenotype ecosystem,
+providing reusable crates for shells, filesystem access, cryptography, network
+helpers, and test support.
 
 Do not apply parent shelf instructions (`/Users/kooshapari/CodeProjects/Phenotype/repos/AGENTS.md`) unless explicitly referenced. Work from this directory and treat paths as local to phenoUtils.
 
