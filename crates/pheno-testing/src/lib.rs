@@ -36,15 +36,17 @@ impl MockHttpServer {
     }
 }
 
-/// Generate random test data
+/// Generate random test data using rand 0.8
 pub fn random_string(len: usize) -> String {
-    use rand::distributions::Alphanumeric;
+    use rand::rngs::ThreadRng;
     use rand::Rng;
-    
-    rand::thread_rng()
-        .sample_iter(&Alphanumeric)
-        .take(len)
-        .map(char::from)
+    let mut rng = ThreadRng::default();
+    (0..len)
+        .map(|_| {
+            let idx = rng.gen_range(0..62);
+            let ch = b"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".get(idx).unwrap_or(&b'a');
+            *ch as char
+        })
         .collect()
 }
 

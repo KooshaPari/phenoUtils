@@ -1,9 +1,8 @@
 //! PhenoCrypto - Cryptographic Utilities
 
-use aes_gcm::{aead::Aead, KeyInit, Aes256Gcm, Nonce};
+use aes_gcm::{aead::Aead, Aes256Gcm, Nonce, KeyInit};
 use sha2::Sha256;
 use thiserror::Error;
-use hmac::{Hmac, Mac};
 
 #[derive(Error, Debug)]
 pub enum CryptoError {
@@ -32,7 +31,7 @@ impl AesEncryptor {
         let ciphertext = self.cipher
             .encrypt(nonce, plaintext)
             .map_err(|_| CryptoError::EncryptionFailed)?;
-        
+
         let mut result = binding.to_vec();
         result.extend(ciphertext);
         Ok(result)
@@ -42,29 +41,31 @@ impl AesEncryptor {
         if data.len() < 12 {
             return Err(CryptoError::DecryptionFailed);
         }
-        
+
         let nonce = Nonce::from_slice(&data[..12]);
         let ciphertext = &data[12..];
-        
+
         self.cipher
             .decrypt(nonce, ciphertext)
             .map_err(|_| CryptoError::DecryptionFailed)
     }
 }
 
-/// HMAC-SHA256
+/// HMAC-SHA256 using hmac 0.12 API
 pub fn hmac_sha256(key: &[u8], data: &[u8]) -> Vec<u8> {
+    use hmac::{Hmac, Mac};
     type HmacSha256 = Hmac<Sha256>;
-    let mac = <HmacSha256 as Mac>::new_from_slice(key)
-        .expect("HMAC can take key of any size");
-    mac.chain_update(data).finalize().into_bytes().to_vec()
+    let mut mac = <HmacSha256 as Mac>::new(key.into());
+    mac.update(data);
+    mac.finalize().into_bytes().to_vec()
 }
 
-/// Secure random bytes
+/// Secure random bytes using rand 0.8
 pub fn random_bytes(len: usize) -> Vec<u8> {
-    use rand::RngCore;
+    use rand::Rng;
+    let mut rng = rand::thread_rng();
     let mut bytes = vec![0u8; len];
-    rand::thread_rng().fill_bytes(&mut bytes);
+    rng.fill(bytes.as_mut_slice());
     bytes
 }
 
