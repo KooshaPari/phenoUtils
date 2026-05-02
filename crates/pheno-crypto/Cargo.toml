@@ -10,5 +10,5 @@ thiserror = { workspace = true }
 aes-gcm = "0.10"
 sha2 = "0.11"
 hmac = "0.13"
-rand = "0.10"
+rand = "0.8"
 base64 = "0.22"

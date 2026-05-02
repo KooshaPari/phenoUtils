@@ -1,9 +1,10 @@
 //! PhenoCrypto - Cryptographic Utilities
 
-use aes_gcm::{aead::Aead, KeyInit, Aes256Gcm, Nonce};
+use aes_gcm::{aead::Aead, KeyInit as AesKeyInit, Aes256Gcm, Nonce};
+use base64::{Engine as _, engine::general_purpose::STANDARD as BASE64_STANDARD};
+use hmac::{Hmac, Mac, KeyInit};
 use sha2::Sha256;
 use thiserror::Error;
-use hmac::{Hmac, Mac};
 
 #[derive(Error, Debug)]
 pub enum CryptoError {
@@ -55,8 +56,8 @@ impl AesEncryptor {
 /// HMAC-SHA256
 pub fn hmac_sha256(key: &[u8], data: &[u8]) -> Vec<u8> {
     type HmacSha256 = Hmac<Sha256>;
-    let mac = <HmacSha256 as Mac>::new_from_slice(key)
-        .expect("HMAC can take key of any size");
+    let mac = HmacSha256::new_from_slice(key)
+        .expect("HMAC key size must be valid");
     mac.chain_update(data).finalize().into_bytes().to_vec()
 }
 
@@ -70,10 +71,10 @@ pub fn random_bytes(len: usize) -> Vec<u8> {
 
 /// Base64 encode
 pub fn base64_encode(data: &[u8]) -> String {
-    base64::Engine::encode(&base64::engine::general_purpose::STANDARD, data)
+    BASE64_STANDARD.encode(data)
 }
 
 pub fn base64_decode(data: &str) -> Result<Vec<u8>, CryptoError> {
-    base64::Engine::decode(&base64::engine::general_purpose::STANDARD, data)
+    BASE64_STANDARD.decode(data)
         .map_err(|_| CryptoError::InvalidKey)
 }
