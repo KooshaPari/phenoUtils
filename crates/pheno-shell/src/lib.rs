@@ -10,6 +10,7 @@ use tokio::io::BufReader;
 /// Shell state
 pub struct Shell<S: ShellState = InMemoryShellState> {
     name: String,
+    #[allow(dead_code)]
     state: Arc<tokio::sync::RwLock<S>>,
     commands: Vec<CommandDef>,
     history: Arc<Mutex<Vec<String>>>,
@@ -93,6 +94,7 @@ impl Shell {
 }
 
 /// Command definition
+#[allow(clippy::type_complexity)]
 pub struct CommandDef {
     pub name: &'static str,
     pub description: &'static str,
