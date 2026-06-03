@@ -38,10 +38,10 @@ impl MockHttpServer {
 
 /// Generate random test data
 pub fn random_string(len: usize) -> String {
-    use rand::distributions::Alphanumeric;
+    use rand::distr::Alphanumeric;
     use rand::Rng;
-    
-    rand::thread_rng()
+
+    rand::rng()
         .sample_iter(&Alphanumeric)
         .take(len)
         .map(char::from)
