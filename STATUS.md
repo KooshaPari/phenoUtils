@@ -1,9 +1,9 @@
 # Status
 
-Last updated: 2026-04-27
+Last updated: 2026-06-08
 
 ## Build
-TBD - GitHub Actions billing-blocked org-wide
+GitHub Actions billing-blocked org-wide. Workflows are configured but not running.
 
 ## Quality gates (enrolled, awaiting billing for live runs)
 - cargo-deny.yml: Monday 09:00 UTC cron + push/PR + workflow_dispatch
@@ -12,9 +12,20 @@ TBD - GitHub Actions billing-blocked org-wide
 - pre-commit: client-side (cargo fmt + check + gitleaks)
 - branch protection: 1 reviewer required, no force-push, dismiss stale
 
+## Current state
+- Branch: `main` (default)
+- Working tree: clean
+- Stashes: 0
+- Open PRs: 0
+- Build tool: `justfile` (standardized 2026-06-08)
+
+## Recent changes
+- Merged PR #53 (workflow hygiene)
+- Standardized on `justfile`; removed `Taskfile.yml`
+- Cleaned stale branches
+
 ## Live verification
 GitHub Actions billing-blocked. Local cargo-deny+audit weekly via `governance/scripts/cargo-deny-org-weekly.sh`.
 
 ## Cross-references
 See `phenotype-org-governance/SUPERSEDED.md` for canonical authority.
-See `phenotype-org-governance/CHANGELOG_2026_04_27.md` for current sprint state.

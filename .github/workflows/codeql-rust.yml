@@ -1,4 +1,8 @@
 name: CodeQL (Rust)
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 
 on:
   push:
@@ -12,7 +16,7 @@ on:
 jobs:
   analyze:
     name: Analyze (rust)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 360
     permissions:
       actions: read

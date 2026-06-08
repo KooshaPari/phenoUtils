@@ -1,4 +1,8 @@
 name: cargo-semver-checks
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 
 on:
   pull_request:
@@ -7,7 +11,7 @@ on:
 
 jobs:
   semver-checks:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: read
     steps:
