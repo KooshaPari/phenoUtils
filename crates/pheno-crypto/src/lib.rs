@@ -63,9 +63,9 @@ pub fn hmac_sha256(key: &[u8], data: &[u8]) -> Vec<u8> {
 
 /// Secure random bytes
 pub fn random_bytes(len: usize) -> Vec<u8> {
-    use rand::RngCore;
+    use rand::RngExt as _;
     let mut bytes = vec![0u8; len];
-    rand::thread_rng().fill_bytes(&mut bytes);
+    rand::rng().fill(&mut bytes);
     bytes
 }
 
