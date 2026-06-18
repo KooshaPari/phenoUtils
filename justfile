@@ -12,6 +12,10 @@ test:
     cargo test --workspace
 
 # Lint (clippy + fmt --check)
+# Coverage report (SSOT for how to measure coverage).
+coverage:
+    cargo tarpaulin --workspace
+
 lint:
     cargo clippy --workspace -- -D warnings
     cargo fmt --check
