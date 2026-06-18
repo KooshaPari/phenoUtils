@@ -1,6 +1,9 @@
 name: Cargo Audit
 
 on:
+
+
+timeout-minutes: 10
   push:
     paths:
       - ".github/workflows/cargo-audit.yml"

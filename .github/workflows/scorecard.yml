@@ -1,6 +1,9 @@
 name: Scorecard
 
 on:
+
+
+timeout-minutes: 10
   push:
     branches: [main, master]
   schedule:
