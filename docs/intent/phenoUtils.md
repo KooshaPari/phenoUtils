@@ -27,13 +27,13 @@ device: macbook
 
 | Date | Source | File | Tag |
 | ---- | ------ | ---- | --- |
-| ? | claude-code | `docs/curated-prompts/claude-code/unknown/2dc5d09f70a5da48.md` | narrative |
-| ? | claude-code | `docs/curated-prompts/claude-code/unknown/49d1ababd724c78a.md` | policy-setting |
-| ? | claude-code | `docs/curated-prompts/claude-code/unknown/5fddcc6dc6b82c30.md` | narrative |
 | ? | claude-code | `docs/curated-prompts/claude-code/unknown/a68e652bacf82b29.md` | narrative |
+| ? | claude-code | `docs/curated-prompts/claude-code/unknown/2dc5d09f70a5da48.md` | narrative |
+| ? | claude-code | `docs/curated-prompts/claude-code/unknown/d9e1439caa25f53a.md` | narrative |
 | ? | claude-code | `docs/curated-prompts/claude-code/unknown/bc2467b727defcc0.md` | narrative |
 | ? | claude-code | `docs/curated-prompts/claude-code/unknown/d38737ecb3315b9b.md` | narrative |
-| ? | claude-code | `docs/curated-prompts/claude-code/unknown/d9e1439caa25f53a.md` | narrative |
+| ? | claude-code | `docs/curated-prompts/claude-code/unknown/5fddcc6dc6b82c30.md` | narrative |
+| ? | claude-code | `docs/curated-prompts/claude-code/unknown/49d1ababd724c78a.md` | policy-setting |
 
 ## Bound Plans
 
