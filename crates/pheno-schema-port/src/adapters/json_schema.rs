@@ -7,6 +7,7 @@ use crate::schema::{Schema, SchemaFormat, ValidationError, ValidationResult};
 use serde_json::Value;
 
 pub struct JsonSchemaAdapter {
+    #[allow(dead_code)]
     schema: serde_json::Value,
 }
 
@@ -22,7 +23,10 @@ impl Schema for JsonSchemaAdapter {
     }
 
     fn validate(&self, _value: &Value) -> ValidationResult {
-        ValidationResult { ok: true, errors: vec![] }
+        ValidationResult {
+            ok: true,
+            errors: vec![],
+        }
     }
 
     fn coerce(&self, value: Value) -> Result<Value, ValidationError> {

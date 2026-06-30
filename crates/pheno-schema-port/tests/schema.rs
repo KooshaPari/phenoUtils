@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT OR Apache-2.0
 // SPDX-FileCopyrightText: 2026 KooshaPari <kooshapari@gmail.com>
 
-use ports::adapters::json_schema::JsonSchemaAdapter;
-use ports::adapters::zod::ZodAdapter;
-use ports::schema::{Schema, SchemaFormat};
+use pheno_schema_port::adapters::json_schema::JsonSchemaAdapter;
+use pheno_schema_port::adapters::zod::ZodAdapter;
+use pheno_schema_port::schema::{Schema, SchemaFormat};
 use serde_json::json;
 
 #[test]
